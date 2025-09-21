@@ -21,12 +21,36 @@
     .faq-item[open] .faq-panel{display:block}
     .answer{margin:8px 0 0;color:var(--vw-text)}
     .msg{display:flex;gap:12px;margin:10px 0}
-    .avatar{width:28px;height:28px;border-radius:50%;background:var(--vw-navy)}
+    .avatar{display:none}
     .bubble{flex:1;background:#f4f7fd;border:1px solid var(--vw-border);padding:12px;border-radius:12px}
     .msg.user .bubble{background:#eef7ff}
     #llm-thread{max-height:320px;overflow:auto;border:1px solid var(--vw-border);border-radius:12px;background:#fff;padding:10px}
-    .input{flex:1;border:1px solid var(--vw-border);border-radius:12px;padding:12px}
-    .send{border:none;background:var(--vw-blue);color:#fff;border-radius:12px;padding:12px 14px;cursor:pointer}
+    .input {
+      flex: 1;
+      border: 2px solid var(--vw-blue);
+      border-radius: 999px;
+      padding: 14px 16px;
+      font-size: 16px;
+      background: #f9fbff;
+      outline: none;
+      transition: box-shadow 0.2s ease;
+    }
+    .input:focus {
+      box-shadow: 0 0 0 3px rgba(8,29,77,0.2);
+    }
+    .send {
+      border: none;
+      background: var(--vw-blue);
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .send:hover {
+      background: #0c2768;
+    }
     .suggest{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
     .suggest button{border:1px solid var(--vw-border);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer}
   </style>
@@ -131,25 +155,31 @@
       function pushLLM(role, text){
         const wrap = document.createElement('div');
         wrap.className = 'msg ' + (role==='user' ? 'user' : 'assistant');
-        wrap.innerHTML = '<div class="avatar" aria-hidden="true"></div><div class="bubble"></div>';
-        wrap.querySelector('.bubble').textContent = text;
+        wrap.innerHTML = '<div class=\"bubble\"></div>';
+        wrap.querySelector('.bubble').innerHTML = text;
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
       }
       function streamLLM(){
-        const response = "Si je devais choisir un seul meilleur, pour quelqu’un qui veut une voiture polyvalente — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :\n\n" +
-          "Bon compromis autonomie électrique / autonomie totale, donc pour les trajets urbains tu peux faire beaucoup en électrique, et sur route t’as une portée raisonnable.\n\n" +
-          "Bonne habitabilité, confort, coffre, ce type de modèle combine souvent les qualités d’une berline familiale.\n\n" +
-          "Coût d’usage souvent plus favorable qu’un gros SUV ou une voiture très sportive.\n\n" +
-          "Si par contre tu es plus porté vers la performance ou as des besoins particuliers (famille nombreuse, budget limité, usage urbain uniquement, etc.), un autre modèle pourrait mieux te convenir (ex : Golf eHybrid pour un usage plus urbain, Tiguan si tu veux plus de taille). Souhaites-tu faire un essai de ce véhicule ?";
+        const response = `
+<b>Mon conseil&nbsp;: Passat eHybrid</b><br><br>
+Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :
+<ul>
+  <li><b>Autonomie équilibrée</b> : bon compromis entre autonomie électrique et autonomie totale (ville + route).</li>
+  <li><b>Habitabilité & confort</b> : espace généreux, coffre pratique, idéale pour un usage familial.</li>
+  <li><b>Coût d’usage</b> : souvent plus favorable qu’un SUV imposant ou un modèle très sportif.</li>
+</ul>
+<p>⚖️ Si tes besoins sont différents (performance, famille nombreuse, budget limité, usage urbain pur, etc.), un autre modèle peut mieux convenir (ex. Golf eHybrid pour la ville, Tiguan pour plus d’espace).</p>
+<p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?</i></p>
+`;
         const wrap = document.createElement('div');
         wrap.className = 'msg assistant';
-        wrap.innerHTML = '<div class="avatar" aria-hidden="true"></div><div class="bubble"><span class="s"></span></div>';
+        wrap.innerHTML = '<div class=\"bubble\"><span class=\"s\"></span></div>';
         const s = wrap.querySelector('.s');
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
         let i=0; const t=setInterval(function(){
-          s.textContent += response[i++]||'';
+          s.innerHTML += response[i++]||'';
           llmThread.scrollTop = llmThread.scrollHeight;
           if(i>=response.length) clearInterval(t);
         }, 8);
