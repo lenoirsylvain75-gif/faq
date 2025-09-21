@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FAQ Volkswagen – Assistant IA</title>
   <style>
-    :root{--vw-navy:#0a1a2b;--vw-blue:#081d4d;--vw-text:#0b1320;--vw-muted:#5c6b80;--vw-border:#e5e8ee;--vw-bg:#ffffff;}
+    :root{--vw-navy:#0a1a2b;--vw-blue:#081d4d;--vw-text:#0b1320;--vw-muted:#5c6b80;--vw-border:#e5e8ee;--vw-bg:#ffffff;--radius:12px;--shadow:0 0 0 rgba(0,0,0,0);}
     html,body{margin:0;background:var(--vw-bg);color:var(--vw-text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
     header, footer{width:100%;margin:0;padding:0}
     header img, footer img{width:100%;height:auto;display:block}
@@ -32,7 +32,6 @@
   </style>
 </head>
 <body>
-  <!-- Header relatif -->
   <header>
     <img src="assets/header.png" alt="Navigation Volkswagen" />
   </header>
@@ -74,10 +73,42 @@
           <p class="answer">L’hybride « classique » se recharge en roulant (récupération d’énergie) et offre de courts roulages en électrique. L’hybride rechargeable (PHEV) se recharge aussi sur prise/bornes et propose une autonomie électrique plus longue au quotidien.</p>
         </div>
       </article>
+
+      <!-- ITEM 3 -->
+      <article class="faq-item" id="q3" data-faq-id="q3">
+        <header role="button" aria-controls="q3-panel" aria-expanded="false" tabindex="0">
+          <h3>Combien de temps faut-il pour recharger une batterie d’hybride rechargeable&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q3-panel" class="faq-panel" role="region" aria-labelledby="q3">
+          <p class="answer">Sur une prise domestique classique, la recharge complète prend environ 6 à 8 heures. Avec une wallbox de 7,4 kW, elle se fait en 3 à 4 heures.</p>
+        </div>
+      </article>
+
+      <!-- ITEM 4 -->
+      <article class="faq-item" id="q4" data-faq-id="q4">
+        <header role="button" aria-controls="q4-panel" aria-expanded="false" tabindex="0">
+          <h3>Quelle autonomie en mode 100 % électrique peut-on espérer&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q4-panel" class="faq-panel" role="region" aria-labelledby="q4">
+          <p class="answer">Selon le modèle, l’autonomie varie de 50 à 100 km en tout électrique (WLTP). Cela suffit pour la majorité des trajets quotidiens en ville.</p>
+        </div>
+      </article>
+
+      <!-- ITEM 5 -->
+      <article class="faq-item" id="q5" data-faq-id="q5">
+        <header role="button" aria-controls="q5-panel" aria-expanded="false" tabindex="0">
+          <h3>Peut-on rouler en hybride rechargeable si la batterie est vide&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q5-panel" class="faq-panel" role="region" aria-labelledby="q5">
+          <p class="answer">Oui, le moteur thermique prend automatiquement le relais lorsque la batterie est déchargée. La voiture fonctionne alors comme un hybride classique.</p>
+        </div>
+      </article>
     </section>
   </main>
 
-  <!-- Footer relatif -->
   <footer>
     <img src="assets/footer.png" alt="Navigation bas de page Volkswagen" />
   </footer>
@@ -106,11 +137,11 @@
         llmThread.scrollTop = llmThread.scrollHeight;
       }
       function streamLLM(){
-        const response = "Si je devais choisir un seul meilleur, pour quelqu’un qui veut une voiture polyvalente — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :\\n\\n"
-          + "Bon compromis autonomie électrique / autonomie totale, donc pour les trajets urbains tu peux faire beaucoup en électrique, et sur route t’as une portée raisonnable.\\n\\n"
-          + "Bonne habitabilité, confort, coffre, ce type de modèle combine souvent les qualités d’une berline familiale.\\n\\n"
-          + "Coût d’usage souvent plus favorable qu’un gros SUV ou une voiture très sportive.\\n\\n"
-          + "Si par contre tu es plus porté vers la performance ou as des besoins particuliers (famille nombreuse, budget limité, usage urbain uniquement, etc.), un autre modèle pourrait mieux te convenir (ex : Golf eHybrid pour un usage plus urbain, Tiguan si tu veux plus de taille). Souhaites-tu faire un essai de ce véhicule ?";
+        const response = "Si je devais choisir un seul meilleur, pour quelqu’un qui veut une voiture polyvalente — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :\n\n" +
+          "Bon compromis autonomie électrique / autonomie totale, donc pour les trajets urbains tu peux faire beaucoup en électrique, et sur route t’as une portée raisonnable.\n\n" +
+          "Bonne habitabilité, confort, coffre, ce type de modèle combine souvent les qualités d’une berline familiale.\n\n" +
+          "Coût d’usage souvent plus favorable qu’un gros SUV ou une voiture très sportive.\n\n" +
+          "Si par contre tu es plus porté vers la performance ou as des besoins particuliers (famille nombreuse, budget limité, usage urbain uniquement, etc.), un autre modèle pourrait mieux te convenir (ex : Golf eHybrid pour un usage plus urbain, Tiguan si tu veux plus de taille). Souhaites-tu faire un essai de ce véhicule ?";
         const wrap = document.createElement('div');
         wrap.className = 'msg assistant';
         wrap.innerHTML = '<div class="avatar" aria-hidden="true"></div><div class="bubble"><span class="s"></span></div>';
