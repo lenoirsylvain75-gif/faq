@@ -155,7 +155,7 @@
       function pushLLM(role, text){
         const wrap = document.createElement('div');
         wrap.className = 'msg ' + (role==='user' ? 'user' : 'assistant');
-        wrap.innerHTML = '<div class=\"bubble\"></div>';
+        wrap.innerHTML = '<div class="bubble"></div>';
         wrap.querySelector('.bubble').innerHTML = text;
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
@@ -174,7 +174,7 @@ Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus lon
 `;
         const wrap = document.createElement('div');
         wrap.className = 'msg assistant';
-        wrap.innerHTML = '<div class=\"bubble\"><span class=\"s\"></span></div>';
+        wrap.innerHTML = '<div class="bubble"><span class="s"></span></div>';
         const s = wrap.querySelector('.s');
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
