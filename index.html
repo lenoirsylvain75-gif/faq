@@ -63,16 +63,19 @@
       margin: 8px 0;
       list-style: none;
       position: relative;
-      padding-left: 28px;
-      line-height: 1.5;
+      padding-left: 32px;
+      line-height: 1.6;
     }
     .bubble li::before {
       content: "✓";
       position: absolute;
-      left: 0;
-      top: 0;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
       color: var(--vw-blue);
       font-weight: bold;
+      font-size: 16px;
+      line-height: 1;
     }
     .bubble b {
       color: var(--vw-navy);
@@ -227,7 +230,7 @@ Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus lon
           s.innerHTML += queue[i++] || '';
           llmThread.scrollTop = llmThread.scrollHeight;
           if (i >= queue.length) clearInterval(t);
-        }, 80);
+        }, 40);
       }
       function sendLLM(){
         const q = llmInput.value.trim();
