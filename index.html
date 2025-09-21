@@ -209,11 +209,25 @@ Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus lon
         const s = wrap.querySelector('.s');
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
-        let i=0; const t=setInterval(function(){
-          s.innerHTML += response[i++]||'';
+
+        // Tokenisation en balises HTML + segments texte
+        const rawTokens = response.split(/(<[^>]+>|\n|\s{2,})/g);
+        const queue = [];
+        rawTokens.forEach(tok => {
+          if (!tok) return;
+          if (tok.startsWith('<') && tok.endsWith('>')) {
+            queue.push(tok); // balise complète
+          } else {
+            tok.split(/(\s+)/).forEach(t => { if (t) queue.push(t); });
+          }
+        });
+
+        let i = 0;
+        const t = setInterval(() => {
+          s.innerHTML += queue[i++] || '';
           llmThread.scrollTop = llmThread.scrollHeight;
-          if(i>=response.length) clearInterval(t);
-        }, 8);
+          if (i >= queue.length) clearInterval(t);
+        }, 80);
       }
       function sendLLM(){
         const q = llmInput.value.trim();
