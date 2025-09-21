@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ Volkswagen – Assistant IA</title>
+  <style>
+    :root{--vw-navy:#0a1a2b;--vw-blue:#081d4d;--vw-text:#0b1320;--vw-muted:#5c6b80;--vw-border:#e5e8ee;--vw-bg:#ffffff;}
+    html,body{margin:0;background:var(--vw-bg);color:var(--vw-text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    header, footer{width:100%;margin:0;padding:0}
+    header img, footer img{width:100%;height:auto;display:block}
+    .container{max-width:980px;margin:48px auto;padding:0 20px}
+    h1{font-weight:800;letter-spacing:-.01em;font-size:clamp(28px,4vw,40px);color:var(--vw-navy);margin:0 0 8px}
+    .faq{display:block}
+    .faq-item{border-bottom:1px solid var(--vw-border);background:transparent}
+    .faq-item header{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:22px 0;cursor:pointer}
+    .faq-item h3{margin:0;font-size:20px;font-weight:700;color:var(--vw-navy)}
+    .faq-item header .chev{transition:transform .2s ease;min-width:22px}
+    .faq-item[open] header .chev{transform:rotate(180deg)}
+    .faq-panel{padding:0 0 22px 0;display:none}
+    .faq-item[open] .faq-panel{display:block}
+    .answer{margin:8px 0 0;color:var(--vw-text)}
+    .msg{display:flex;gap:12px;margin:10px 0}
+    .avatar{width:28px;height:28px;border-radius:50%;background:var(--vw-navy)}
+    .bubble{flex:1;background:#f4f7fd;border:1px solid var(--vw-border);padding:12px;border-radius:12px}
+    .msg.user .bubble{background:#eef7ff}
+    #llm-thread{max-height:320px;overflow:auto;border:1px solid var(--vw-border);border-radius:12px;background:#fff;padding:10px}
+    .input{flex:1;border:1px solid var(--vw-border);border-radius:12px;padding:12px}
+    .send{border:none;background:var(--vw-blue);color:#fff;border-radius:12px;padding:12px 14px;cursor:pointer}
+    .suggest{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+    .suggest button{border:1px solid var(--vw-border);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <!-- Header relatif -->
+  <header>
+    <img src="assets/header.png" alt="Navigation Volkswagen" />
+  </header>
+
+  <main class="container" role="main">
+    <h1>Vos questions, <span style="color:var(--vw-blue)">nos réponses</span></h1>
+
+    <section class="faq" aria-label="FAQ Volkswagen – Hybrides">
+      <!-- ITEM 1 -->
+      <article class="faq-item" id="q-llm" data-faq-id="q-llm" open>
+        <header role="button" aria-controls="q-llm-panel" aria-expanded="true" tabindex="0">
+          <h3>Je suis un GPT incollable sur les hybrides de Volkswagen, posez moi vos questions.</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q-llm-panel" class="faq-panel" role="region" aria-labelledby="q-llm" style="display:block">
+          <div class="ai-box" id="ai-llm">
+            <div id="llm-thread"></div>
+            <div class="suggest" aria-label="Suggestions de questions" style="margin-top:10px">
+              <button class="suggestion-llm">Autonomie électrique réelle en ville</button>
+              <button class="suggestion-llm">Temps de charge sur wallbox 7,4 kW</button>
+              <button class="suggestion-llm">Volume de coffre (banquette en place)</button>
+              <button class="suggestion-llm">Peut-on tracter ? Poids max</button>
+            </div>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <input id="llm-input" class="input" type="text" placeholder="Ex : Quelle est l'autonomie électrique mixte ?" aria-label="Saisissez votre question sur le modèle" />
+              <button id="llm-send" class="send">Demander</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ITEM 2 -->
+      <article class="faq-item" id="q2" data-faq-id="q2">
+        <header role="button" aria-controls="q2-panel" aria-expanded="false" tabindex="0">
+          <h3>Quelle est la différence entre hybride classique et hybride rechargeable&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q2-panel" class="faq-panel" role="region" aria-labelledby="q2">
+          <p class="answer">L’hybride « classique » se recharge en roulant (récupération d’énergie) et offre de courts roulages en électrique. L’hybride rechargeable (PHEV) se recharge aussi sur prise/bornes et propose une autonomie électrique plus longue au quotidien.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer relatif -->
+  <footer>
+    <img src="assets/footer.png" alt="Navigation bas de page Volkswagen" />
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item header').forEach(h=>{
+      h.addEventListener('click', ()=> toggle(h));
+      h.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(h);} });
+      function toggle(header){
+        const item = header.parentElement;
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', String(!expanded));
+        item.toggleAttribute('open');
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+      const llmThread = document.getElementById('llm-thread');
+      const llmInput  = document.getElementById('llm-input');
+      const llmSend   = document.getElementById('llm-send');
+      function pushLLM(role, text){
+        const wrap = document.createElement('div');
+        wrap.className = 'msg ' + (role==='user' ? 'user' : 'assistant');
+        wrap.innerHTML = '<div class="avatar" aria-hidden="true"></div><div class="bubble"></div>';
+        wrap.querySelector('.bubble').textContent = text;
+        llmThread.appendChild(wrap);
+        llmThread.scrollTop = llmThread.scrollHeight;
+      }
+      function streamLLM(){
+        const response = "Si je devais choisir un seul meilleur, pour quelqu’un qui veut une voiture polyvalente — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :\\n\\n"
+          + "Bon compromis autonomie électrique / autonomie totale, donc pour les trajets urbains tu peux faire beaucoup en électrique, et sur route t’as une portée raisonnable.\\n\\n"
+          + "Bonne habitabilité, confort, coffre, ce type de modèle combine souvent les qualités d’une berline familiale.\\n\\n"
+          + "Coût d’usage souvent plus favorable qu’un gros SUV ou une voiture très sportive.\\n\\n"
+          + "Si par contre tu es plus porté vers la performance ou as des besoins particuliers (famille nombreuse, budget limité, usage urbain uniquement, etc.), un autre modèle pourrait mieux te convenir (ex : Golf eHybrid pour un usage plus urbain, Tiguan si tu veux plus de taille). Souhaites-tu faire un essai de ce véhicule ?";
+        const wrap = document.createElement('div');
+        wrap.className = 'msg assistant';
+        wrap.innerHTML = '<div class="avatar" aria-hidden="true"></div><div class="bubble"><span class="s"></span></div>';
+        const s = wrap.querySelector('.s');
+        llmThread.appendChild(wrap);
+        llmThread.scrollTop = llmThread.scrollHeight;
+        let i=0; const t=setInterval(function(){
+          s.textContent += response[i++]||'';
+          llmThread.scrollTop = llmThread.scrollHeight;
+          if(i>=response.length) clearInterval(t);
+        }, 8);
+      }
+      function sendLLM(){
+        const q = llmInput.value.trim();
+        if(!q) return;
+        pushLLM('user', q);
+        llmInput.value='';
+        streamLLM();
+      }
+      llmSend.addEventListener('click', sendLLM);
+      llmInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); sendLLM(); }});
+      document.querySelectorAll('.suggestion-llm').forEach(b=> b.addEventListener('click', ()=>{ llmInput.value = b.textContent; sendLLM(); }));
+    });
+  </script>
+</body>
+</html>
