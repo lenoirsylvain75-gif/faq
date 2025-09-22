@@ -68,7 +68,7 @@
     .bubble li {
       list-style: none;
       margin: 8px 0;
-      padding-left: 4px; /* petit retrait pour aérer le texte après le ✓ */
+      padding-left: 4px;
     }
     .bubble b {
       color: var(--vw-navy);
@@ -79,6 +79,50 @@
     .bubble p:last-child {
       font-style: italic;
       color: var(--vw-muted);
+    }
+
+    /* Sticky footer nav */
+    .sticky-nav {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 9999;
+      background: #fff;
+      border-top: 1px solid var(--vw-border);
+      box-shadow: 0 -10px 30px rgba(0,0,0,.06);
+    }
+    .sticky-nav .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .sticky-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--vw-blue);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .sticky-link svg { width: 22px; height: 22px }
+    .sticky-chat {
+      margin-left: auto;
+      background: var(--vw-blue);
+      color: #fff;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    body { padding-bottom: 84px; }
+    @media (max-width: 720px) {
+      .sticky-nav .inner { gap: 16px; padding: 8px 12px; }
+      .sticky-link span { display: none; }
+      .sticky-chat { padding: 10px 14px; }
     }
   </style>
 </head>
@@ -114,55 +158,45 @@
         </div>
       </article>
 
-      <!-- ITEM 2 -->
-      <article class="faq-item" id="q2" data-faq-id="q2">
-        <header role="button" aria-controls="q2-panel" aria-expanded="false" tabindex="0">
-          <h3>Quelle est la différence entre hybride classique et hybride rechargeable&nbsp;?</h3>
-          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
-        </header>
-        <div id="q2-panel" class="faq-panel" role="region" aria-labelledby="q2">
-          <p class="answer">L’hybride « classique » se recharge en roulant (récupération d’énergie) et offre de courts roulages en électrique. L’hybride rechargeable (PHEV) se recharge aussi sur prise/bornes et propose une autonomie électrique plus longue au quotidien.</p>
-        </div>
-      </article>
-
-      <!-- ITEM 3 -->
-      <article class="faq-item" id="q3" data-faq-id="q3">
-        <header role="button" aria-controls="q3-panel" aria-expanded="false" tabindex="0">
-          <h3>Combien de temps faut-il pour recharger une batterie d’hybride rechargeable&nbsp;?</h3>
-          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
-        </header>
-        <div id="q3-panel" class="faq-panel" role="region" aria-labelledby="q3">
-          <p class="answer">Sur une prise domestique classique, la recharge complète prend environ 6 à 8 heures. Avec une wallbox de 7,4 kW, elle se fait en 3 à 4 heures.</p>
-        </div>
-      </article>
-
-      <!-- ITEM 4 -->
-      <article class="faq-item" id="q4" data-faq-id="q4">
-        <header role="button" aria-controls="q4-panel" aria-expanded="false" tabindex="0">
-          <h3>Quelle autonomie en mode 100 % électrique peut-on espérer&nbsp;?</h3>
-          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
-        </header>
-        <div id="q4-panel" class="faq-panel" role="region" aria-labelledby="q4">
-          <p class="answer">Selon le modèle, l’autonomie varie de 50 à 100 km en tout électrique (WLTP). Cela suffit pour la majorité des trajets quotidiens en ville.</p>
-        </div>
-      </article>
-
-      <!-- ITEM 5 -->
-      <article class="faq-item" id="q5" data-faq-id="q5">
-        <header role="button" aria-controls="q5-panel" aria-expanded="false" tabindex="0">
-          <h3>Peut-on rouler en hybride rechargeable si la batterie est vide&nbsp;?</h3>
-          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
-        </header>
-        <div id="q5-panel" class="faq-panel" role="region" aria-labelledby="q5">
-          <p class="answer">Oui, le moteur thermique prend automatiquement le relais lorsque la batterie est déchargée. La voiture fonctionne alors comme un hybride classique.</p>
-        </div>
-      </article>
+      <!-- autres items de la FAQ -->
+      <!-- ... -->
     </section>
   </main>
 
   <footer>
     <img src="assets/footer.png" alt="Navigation bas de page Volkswagen" />
   </footer>
+
+  <nav class="sticky-nav" aria-label="Liens rapides bas de page">
+    <div class="inner">
+      <a class="sticky-link" href="#">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5Z" stroke="#081d4d" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span>Page d'accueil</span>
+      </a>
+
+      <a class="sticky-link" href="#">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M7 11h10M6 7h12" stroke="#081d4d" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Configurer</span>
+      </a>
+
+      <a class="sticky-link" href="#">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/><rect x="3" y="13" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/><rect x="14" y="13" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/></svg>
+        <span>Découvrir les modèles</span>
+      </a>
+
+      <a class="sticky-link" href="#">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 12.5 4a1 1 0 0 1 1.4 0L20 10.1a1 1 0 0 1 0 1.4L11.4 20a1 1 0 0 1-1.4 0L4 14.6a1 1 0 0 1 0-1.4Z" stroke="#081d4d" stroke-width="1.8"/><circle cx="16" cy="8" r="1.5" fill="#081d4d"/></svg>
+        <span>Découvrir les offres</span>
+      </a>
+
+      <button class="sticky-chat" type="button">
+        <svg viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:8px">
+          <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+        Chat
+      </button>
+    </div>
+  </nav>
 
   <script>
     document.querySelectorAll('.faq-item header').forEach(h=>{
@@ -175,10 +209,12 @@
         item.toggleAttribute('open');
       }
     });
+
     document.addEventListener('DOMContentLoaded', function(){
       const llmThread = document.getElementById('llm-thread');
       const llmInput  = document.getElementById('llm-input');
       const llmSend   = document.getElementById('llm-send');
+
       function pushLLM(role, text){
         const wrap = document.createElement('div');
         wrap.className = 'msg ' + (role==='user' ? 'user' : 'assistant');
@@ -187,19 +223,21 @@
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
       }
+
       function streamLLM(){
         const response = `
-<b>Mon conseil&nbsp;: Passat eHybrid</b><br><br>
-Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :
+<b>💡 Mon conseil&nbsp;: Passat eHybrid</b><br><br>
+Si je devais choisir un seul modèle <b>polyvalent</b> — <b>quotidien</b> + <b>trajets plus longs</b>, sans trop sacrifier le confort ou le coût — je pencherais pour la <b>Passat eHybrid</b>. Voici pourquoi :
 <ul>
-  <li><span class=\"check\">✓</span><b>Autonomie équilibrée</b> : bon compromis entre autonomie électrique et autonomie totale (ville + route).</li>
-  <li><span class=\"check\">✓</span><b>Habitabilité & confort</b> : espace généreux, coffre pratique, idéale pour un usage familial.</li>
-  <li><span class=\"check\">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un SUV imposant ou un modèle très sportif.</li>
+  <li><span class="check">✓</span><b>Autonomie équilibrée</b> : bon compromis entre <b>autonomie électrique</b> et <b>autonomie totale</b> (ville + route).</li>
+  <li><span class="check">✓</span><b>Habitabilité & confort</b> : espace généreux, <b>coffre pratique</b>, idéale pour un usage familial.</li>
+  <li><span class="check">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un <b>SUV imposant</b> ou un <b>modèle très sportif</b>.</li>
 </ul>
 <br>
-<p>⚖️ Si tes besoins sont différents (performance, famille nombreuse, budget limité, usage urbain pur, etc.), un autre modèle peut mieux convenir (ex. Golf eHybrid pour la ville, Tiguan pour plus d’espace).</p>
+<p>⚖️ <b>Si tes besoins sont différents</b> (performance, famille nombreuse, budget limité, usage urbain pur, etc.), un autre modèle peut mieux convenir (ex. <b>Golf eHybrid</b> pour la ville, <b>Tiguan</b> pour plus d’espace).</p>
 <p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?</i></p>
 `;
+
         const wrap = document.createElement('div');
         wrap.className = 'msg assistant';
         wrap.innerHTML = '<div class="bubble"><span class="s"></span></div>';
@@ -207,13 +245,12 @@ Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus lon
         llmThread.appendChild(wrap);
         llmThread.scrollTop = llmThread.scrollHeight;
 
-        // Tokenisation en balises HTML + segments texte
         const rawTokens = response.split(/(<[^>]+>|\n|\s{2,})/g);
         const queue = [];
         rawTokens.forEach(tok => {
           if (!tok) return;
           if (tok.startsWith('<') && tok.endsWith('>')) {
-            queue.push(tok); // balise complète
+            queue.push(tok);
           } else {
             tok.split(/(\s+)/).forEach(t => { if (t) queue.push(t); });
           }
@@ -226,6 +263,7 @@ Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus lon
           if (i >= queue.length) clearInterval(t);
         }, 40);
       }
+
       function sendLLM(){
         const q = llmInput.value.trim();
         if(!q) return;
@@ -233,6 +271,7 @@ Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus lon
         llmInput.value='';
         streamLLM();
       }
+
       llmSend.addEventListener('click', sendLLM);
       llmInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); sendLLM(); }});
       document.querySelectorAll('.suggestion-llm').forEach(b=> b.addEventListener('click', ()=>{ llmInput.value = b.textContent; sendLLM(); }));
