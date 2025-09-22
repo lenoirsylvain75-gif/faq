@@ -81,44 +81,15 @@
       color: var(--vw-muted);
     }
 
-    /* Sticky footer nav */
-    .sticky-nav {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 9999;
-      background: #fff;
-      border-top: 1px solid var(--vw-border);
-      box-shadow: 0 -10px 30px rgba(0,0,0,.06);
+    /* Sticky footer image */
+    .sticky-img{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      z-index:9999;
+      background: transparent;
     }
-    .sticky-nav .inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-    .sticky-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--vw-blue);
-      text-decoration: none;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .sticky-link svg { width: 22px; height: 22px }
-    .sticky-chat {
-      margin-left: auto;
-      background: var(--vw-blue);
-      color: #fff;
-      border: 0;
-      border-radius: 999px;
-      padding: 12px 18px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    body { padding-bottom: 84px; }
+    .sticky-img img{width:100%;height:auto;display:block}
+    body{padding-bottom:120px;}
     @media (max-width: 720px) {
       .sticky-nav .inner { gap: 16px; padding: 8px 12px; }
       .sticky-link span { display: none; }
@@ -159,6 +130,45 @@
       </article>
 
       <!-- autres items de la FAQ -->
+      <article class="faq-item" id="q2" data-faq-id="q2">
+        <header role="button" aria-controls="q2-panel" aria-expanded="false" tabindex="0">
+          <h3>Quelle est la différence entre hybride classique et hybride rechargeable&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q2-panel" class="faq-panel" role="region" aria-labelledby="q2">
+          <p class="answer">L’hybride « classique » se recharge en roulant (récupération d’énergie) et offre de courts roulages en électrique. L’hybride rechargeable (PHEV) se recharge aussi sur prise/bornes et propose une autonomie électrique plus longue au quotidien.</p>
+        </div>
+      </article>
+
+      <article class="faq-item" id="q3" data-faq-id="q3">
+        <header role="button" aria-controls="q3-panel" aria-expanded="false" tabindex="0">
+          <h3>Combien de temps faut-il pour recharger une batterie d’hybride rechargeable&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q3-panel" class="faq-panel" role="region" aria-labelledby="q3">
+          <p class="answer">Sur une prise domestique classique, la recharge complète prend environ 6 à 8 heures. Avec une wallbox de 7,4 kW, elle se fait en 3 à 4 heures.</p>
+        </div>
+      </article>
+
+      <article class="faq-item" id="q4" data-faq-id="q4">
+        <header role="button" aria-controls="q4-panel" aria-expanded="false" tabindex="0">
+          <h3>Quelle autonomie en mode 100 % électrique peut-on espérer&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q4-panel" class="faq-panel" role="region" aria-labelledby="q4">
+          <p class="answer">Selon le modèle, l’autonomie varie de 50 à 100 km en tout électrique (WLTP). Cela suffit pour la majorité des trajets quotidiens en ville.</p>
+        </div>
+      </article>
+
+      <article class="faq-item" id="q5" data-faq-id="q5">
+        <header role="button" aria-controls="q5-panel" aria-expanded="false" tabindex="0">
+          <h3>Peut-on rouler en hybride rechargeable si la batterie est vide&nbsp;?</h3>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#233" stroke-width="2" stroke-linecap="round"/></svg>
+        </header>
+        <div id="q5-panel" class="faq-panel" role="region" aria-labelledby="q5">
+          <p class="answer">Oui, le moteur thermique prend automatiquement le relais lorsque la batterie est déchargée. La voiture fonctionne alors comme un hybride classique.</p>
+        </div>
+      </article>
       <!-- ... -->
     </section>
   </main>
@@ -167,36 +177,9 @@
     <img src="assets/footer.png" alt="Navigation bas de page Volkswagen" />
   </footer>
 
-  <nav class="sticky-nav" aria-label="Liens rapides bas de page">
-    <div class="inner">
-      <a class="sticky-link" href="#">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5Z" stroke="#081d4d" stroke-width="1.8" stroke-linejoin="round"/></svg>
-        <span>Page d'accueil</span>
-      </a>
-
-      <a class="sticky-link" href="#">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M7 11h10M6 7h12" stroke="#081d4d" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <span>Configurer</span>
-      </a>
-
-      <a class="sticky-link" href="#">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/><rect x="3" y="13" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/><rect x="14" y="13" width="7" height="7" rx="1.5" stroke="#081d4d" stroke-width="1.8"/></svg>
-        <span>Découvrir les modèles</span>
-      </a>
-
-      <a class="sticky-link" href="#">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 12.5 4a1 1 0 0 1 1.4 0L20 10.1a1 1 0 0 1 0 1.4L11.4 20a1 1 0 0 1-1.4 0L4 14.6a1 1 0 0 1 0-1.4Z" stroke="#081d4d" stroke-width="1.8"/><circle cx="16" cy="8" r="1.5" fill="#081d4d"/></svg>
-        <span>Découvrir les offres</span>
-      </a>
-
-      <button class="sticky-chat" type="button">
-        <svg viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:8px">
-          <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
-        </svg>
-        Chat
-      </button>
-    </div>
-  </nav>
+  <div class="sticky-img" aria-label="Actions bas de page">
+    <img src="assets/sticky.png" alt="Liens rapides bas de page Volkswagen" />
+  </div>
 
   <script>
     document.querySelectorAll('.faq-item header').forEach(h=>{
