@@ -55,21 +55,10 @@
     .suggest button{border:1px solid var(--vw-border);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer}
 
     /* Mise en forme des réponses IA */
-    .bubble ul {
-      margin: 12px 0;
-      padding-left: 0;
-    }
-    .bubble li {
-      margin: 8px 0;
-      list-style: none;
-      line-height: 1.6;
-      padding-left: 0;
-    }
-    .bubble li::before {
-      content: "✓ ";
+    .check {
       color: var(--vw-blue);
       font-weight: bold;
-      font-size: 16px;
+      margin-right: 6px;
     }
     .bubble b {
       color: var(--vw-navy);
@@ -193,9 +182,9 @@
 <b>Mon conseil&nbsp;: Passat eHybrid</b><br><br>
 Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :
 <ul>
-  <li><b>Autonomie équilibrée</b> : bon compromis entre autonomie électrique et autonomie totale (ville + route).</li>
-  <li><b>Habitabilité & confort</b> : espace généreux, coffre pratique, idéale pour un usage familial.</li>
-  <li><b>Coût d’usage</b> : souvent plus favorable qu’un SUV imposant ou un modèle très sportif.</li>
+  <li><span class="check">✓</span><b>Autonomie équilibrée</b> : bon compromis entre autonomie électrique et autonomie totale (ville + route).</li>
+  <li><span class="check">✓</span><b>Habitabilité & confort</b> : espace généreux, coffre pratique, idéale pour un usage familial.</li>
+  <li><span class="check">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un SUV imposant ou un modèle très sportif.</li>
 </ul>
 <p>⚖️ Si tes besoins sont différents (performance, famille nombreuse, budget limité, usage urbain pur, etc.), un autre modèle peut mieux convenir (ex. Golf eHybrid pour la ville, Tiguan pour plus d’espace).</p>
 <p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?</i></p>
