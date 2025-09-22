@@ -188,18 +188,7 @@
         llmThread.scrollTop = llmThread.scrollHeight;
       }
       function streamLLM(){
-        const response = `
-<b>Mon conseil&nbsp;: Passat eHybrid</b><br><br>
-Si je devais choisir un seul modèle polyvalent — quotidien + trajets plus longs, sans trop sacrifier le confort ou le coût — je pencherais pour la Passat eHybrid. Voici pourquoi :
-<ul>
-  <li><span class=\"check\">✓</span><b>Autonomie équilibrée</b> : bon compromis entre autonomie électrique et autonomie totale (ville + route).</li>
-  <li><span class=\"check\">✓</span><b>Habitabilité & confort</b> : espace généreux, coffre pratique, idéale pour un usage familial.</li>
-  <li><span class=\"check\">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un SUV imposant ou un modèle très sportif.</li>
-</ul>
-<br>
-<p>⚖️ Si tes besoins sont différents (performance, famille nombreuse, budget limité, usage urbain pur, etc.), un autre modèle peut mieux convenir (ex. Golf eHybrid pour la ville, Tiguan pour plus d’espace).</p>
-<p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?</i></p>
-`;
+        const response = `\n<b>💡 Mon conseil&nbsp;: Passat eHybrid</b><br><br>\nSi je devais choisir un seul modèle <b>polyvalent</b> — <b>quotidien</b> + <b>trajets plus longs</b>, sans trop sacrifier le confort ou le coût — je pencherais pour la <b>Passat eHybrid</b>. Voici pourquoi :\n<ul>\n  <li><span class=\\"check\\">✓</span><b>Autonomie équilibrée</b> : bon compromis entre <b>autonomie électrique</b> et <b>autonomie totale</b> (ville + route).</li>\n  <li><span class=\\"check\\">✓</span><b>Habitabilité & confort</b> : espace généreux, <b>coffre pratique</b>, idéale pour un usage familial.</li>\n  <li><span class=\\"check\\">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un <b>SUV imposant</b> ou un <b>modèle très sportif</b>.</li>\n</ul>\n<br>\n<p>⚖️ <b>Si tes besoins sont différents</b> (performance, famille nombreuse, budget limité, usage urbain pur, etc.), un autre modèle peut mieux convenir (ex. <b>Golf eHybrid</b> pour la ville, <b>Tiguan</b> pour plus d’espace).</p>\n<p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?<
         const wrap = document.createElement('div');
         wrap.className = 'msg assistant';
         wrap.innerHTML = '<div class="bubble"><span class="s"></span></div>';
