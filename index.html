@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Volkswagen – Gamme hybride</title>
+  <title>FAQ Volkswagen – Assistant IA</title>
   <style>
     :root{--vw-navy:#0a1a2b;--vw-blue:#081d4d;--vw-text:#0b1320;--vw-muted:#5c6b80;--vw-border:#e5e8ee;--vw-bg:#ffffff;--radius:12px;--shadow:0 0 0 rgba(0,0,0,0);}
     html,body{margin:0;background:var(--vw-bg);color:var(--vw-text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
@@ -71,7 +71,7 @@
       padding-left: 4px;
     }
     .bubble b {
-      color: var(--vw-navy);
+      color: inherit; /* ne recolore plus en navy pour laisser ressortir les highlights */
     }
     .bubble p {
       margin: 10px 0;
@@ -82,7 +82,10 @@
     }
     .highlight-vw {
       color: #081d4d !important;
-      font-weight: 700;
+      font-weight: 800;
+      background: linear-gradient(transparent 60%, rgba(8,29,77,0.18) 60%);
+      padding: 0 .08em;
+      border-radius: 2px;
     }
 
     /* Sticky footer nav image */
@@ -207,15 +210,15 @@
 
       function streamLLM(){
         const response = `
-<b>💡 Mon conseil&nbsp;: <span class="highlight-vw">Passat eHybrid</span></b><br><br>
-Si je devais choisir un seul modèle <b>polyvalent</b> — <b>quotidien</b> + <b>trajets plus longs</b>, sans trop sacrifier le <b>confort</b> ou le <b>coût</b> — je pencherais pour la <span class="highlight-vw">Passat eHybrid</span>. Voici pourquoi :
+<b>💡 Mon conseil&nbsp;: <span class=\"highlight-vw\">Passat eHybrid</span></b><br><br>
+Si je devais choisir un seul modèle <span class=\"highlight-vw\">polyvalent</span> — <span class=\"highlight-vw\">quotidien</span> + <span class=\"highlight-vw\">trajets plus longs</span>, sans trop sacrifier le <span class=\"highlight-vw\">confort</span> ou le <span class=\"highlight-vw\">coût</span> — je pencherais pour la <span class=\"highlight-vw\">Passat eHybrid</span>. Voici pourquoi :
 <ul>
-  <li><span class="check">✓</span><b>Autonomie équilibrée</b> : bon compromis entre <b>autonomie électrique</b> et <b>autonomie totale</b> (ville + route).</li>
-  <li><span class="check">✓</span><b>Habitabilité & confort</b> : <b>espace généreux</b>, <b>coffre pratique</b>, idéale pour un <b>usage familial</b>.</li>
-  <li><span class="check">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un <b>SUV imposant</b> ou un <b>modèle très sportif</b>.</li>
+  <li><span class=\"check\">✓</span><span class=\"highlight-vw\">Autonomie équilibrée</span> : bon compromis entre <span class=\"highlight-vw\">autonomie électrique</span> et <span class=\"highlight-vw\">autonomie totale</span> (ville + route).</li>
+  <li><span class=\"check\">✓</span><span class=\"highlight-vw\">Habitabilité & confort</span> : <span class=\"highlight-vw\">espace généreux</span>, <span class=\"highlight-vw\">coffre pratique</span>, idéale pour un <span class=\"highlight-vw\">usage familial</span>.</li>
+  <li><span class=\"check\">✓</span><span class=\"highlight-vw\">Coût d’usage</span> : souvent plus favorable qu’un <span class=\"highlight-vw\">SUV imposant</span> ou un <span class=\"highlight-vw\">modèle très sportif</span>.</li>
 </ul>
 <br>
-<p>⚖️ <b>Si tes besoins sont différents</b> (performance, <b>famille nombreuse</b>, <b>budget limité</b>, <b>usage urbain pur</b>, etc.), un autre modèle peut mieux convenir (ex. <span class="highlight-vw">Golf eHybrid</span> pour la ville, <span class="highlight-vw">Tiguan</span> pour plus d’espace).</p>
+<p>⚖️ <span class=\"highlight-vw\">Si tes besoins sont différents</span> (performance, <span class=\"highlight-vw\">famille nombreuse</span>, <span class=\"highlight-vw\">budget limité</span>, <span class=\"highlight-vw\">usage urbain pur</span>, etc.), un autre modèle peut mieux convenir (ex. <span class=\"highlight-vw\">Golf eHybrid</span> pour la ville, <span class=\"highlight-vw\">Tiguan</span> pour plus d’espace).</p>
 <p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?</i></p>
 `;
 
