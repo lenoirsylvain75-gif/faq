@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FAQ Volkswagen – Assistant IA</title>
+  <title>Volkswagen – Gamme hybride</title>
   <style>
     :root{--vw-navy:#0a1a2b;--vw-blue:#081d4d;--vw-text:#0b1320;--vw-muted:#5c6b80;--vw-border:#e5e8ee;--vw-bg:#ffffff;--radius:12px;--shadow:0 0 0 rgba(0,0,0,0);}
     html,body{margin:0;background:var(--vw-bg);color:var(--vw-text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
@@ -80,8 +80,12 @@
       font-style: italic;
       color: var(--vw-muted);
     }
+    .highlight-vw {
+      color: #081d4d !important;
+      font-weight: 700;
+    }
 
-    /* Sticky footer image */
+    /* Sticky footer nav image */
     .sticky-img{
       position:fixed;
       left:0; right:0; bottom:0;
@@ -90,11 +94,6 @@
     }
     .sticky-img img{width:100%;height:auto;display:block}
     body{padding-bottom:120px;}
-    @media (max-width: 720px) {
-      .sticky-nav .inner { gap: 16px; padding: 8px 12px; }
-      .sticky-link span { display: none; }
-      .sticky-chat { padding: 10px 14px; }
-    }
   </style>
 </head>
 <body>
@@ -169,7 +168,6 @@
           <p class="answer">Oui, le moteur thermique prend automatiquement le relais lorsque la batterie est déchargée. La voiture fonctionne alors comme un hybride classique.</p>
         </div>
       </article>
-      <!-- ... -->
     </section>
   </main>
 
@@ -209,15 +207,15 @@
 
       function streamLLM(){
         const response = `
-<b>💡 Mon conseil&nbsp;: <span style=\"color:#081d4d;font-weight:bold\">Passat eHybrid</span></b><br><br>
-Si je devais choisir un seul modèle <b>polyvalent</b> — <b>quotidien</b> + <b>trajets plus longs</b>, sans trop sacrifier le <b>confort</b> ou le <b>coût</b> — je pencherais pour la <span style=\"color:#081d4d;font-weight:bold\">Passat eHybrid</span>. Voici pourquoi :
+<b>💡 Mon conseil&nbsp;: <span class="highlight-vw">Passat eHybrid</span></b><br><br>
+Si je devais choisir un seul modèle <b>polyvalent</b> — <b>quotidien</b> + <b>trajets plus longs</b>, sans trop sacrifier le <b>confort</b> ou le <b>coût</b> — je pencherais pour la <span class="highlight-vw">Passat eHybrid</span>. Voici pourquoi :
 <ul>
-  <li><span class=\"check\">✓</span><b>Autonomie équilibrée</b> : bon compromis entre <b>autonomie électrique</b> et <b>autonomie totale</b> (ville + route).</li>
-  <li><span class=\"check\">✓</span><b>Habitabilité & confort</b> : <b>espace généreux</b>, <b>coffre pratique</b>, idéale pour un <b>usage familial</b>.</li>
-  <li><span class=\"check\">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un <b>SUV imposant</b> ou un <b>modèle très sportif</b>.</li>
+  <li><span class="check">✓</span><b>Autonomie équilibrée</b> : bon compromis entre <b>autonomie électrique</b> et <b>autonomie totale</b> (ville + route).</li>
+  <li><span class="check">✓</span><b>Habitabilité & confort</b> : <b>espace généreux</b>, <b>coffre pratique</b>, idéale pour un <b>usage familial</b>.</li>
+  <li><span class="check">✓</span><b>Coût d’usage</b> : souvent plus favorable qu’un <b>SUV imposant</b> ou un <b>modèle très sportif</b>.</li>
 </ul>
 <br>
-<p>⚖️ <b>Si tes besoins sont différents</b> (performance, <b>famille nombreuse</b>, <b>budget limité</b>, <b>usage urbain pur</b>, etc.), un autre modèle peut mieux convenir (ex. <span style=\"color:#081d4d;font-weight:bold\">Golf eHybrid</span> pour la ville, <span style=\"color:#081d4d;font-weight:bold\">Tiguan</span> pour plus d’espace).</p>
+<p>⚖️ <b>Si tes besoins sont différents</b> (performance, <b>famille nombreuse</b>, <b>budget limité</b>, <b>usage urbain pur</b>, etc.), un autre modèle peut mieux convenir (ex. <span class="highlight-vw">Golf eHybrid</span> pour la ville, <span class="highlight-vw">Tiguan</span> pour plus d’espace).</p>
 <p><i>Souhaites-tu faire un essai de ce véhicule&nbsp;?</i></p>
 `;
 
